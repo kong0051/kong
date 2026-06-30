@@ -1,190 +1,329 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ธีรภัทร ฟูเกษม</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teeraphat | Portfolio</title>
+    <style>
+        /* สไตล์พื้นฐาน */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Helvetica Neue', Arial, sans-serif;
+        }
 
-<style>
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-        font-family:'Segoe UI',sans-serif;
-    }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
 
-    body{
-        background:#f4f6f9;
-        color:#333;
-    }
-   <img  src="1000018640.jpg">
-    header{
-        background:linear-gradient(135deg,#4e73df,#224abe);
-        color:white;
-        text-align:center;
-        padding:50px 20px;
-    }
+        /* แถบเมนู (Navbar) */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
 
-    header img{
-        width:150px;
-        height:150px;
-        border-radius:50%;
-        border:5px solid white;
-        object-fit:cover;
-        margin-bottom:15px;
-    }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-    nav{
-        background:#224abe;
-        padding:15px;
-        text-align:center;
-    }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
 
-    nav a{
-        color:white;
-        text-decoration:none;
-        margin:0 15px;
-        font-weight:bold;
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
 
-    section{
-        max-width:1000px;
-        margin:30px auto;
-        padding:20px;
-    }
+        nav ul li {
+            margin-left: 20px;
+        }
 
-    .card{
-        background:white;
-        padding:25px;
-        border-radius:12px;
-        margin-bottom:20px;
-        box-shadow:0 2px 10px rgba(0,0,0,0.1);
-    }
+        nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
 
-    .skills{
-        display:flex;
-        flex-wrap:wrap;
-        gap:10px;
-    }
+        nav ul li a:hover {
+            color: #007bff;
+        }
 
-    .skill{
-        background:#4e73df;
-        color:white;
-        padding:8px 15px;
-        border-radius:20px;
-    }
+        /* ส่วนแนะนำตัว (Hero Section) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%);
+            padding: 0 20px;
+            padding-top: 80px;
+        }
 
-    .projects{
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-        gap:20px;
-    }
+        .hero-content h1 {
+            font-size: 48px;
+            color: #111827;
+            margin-bottom: 10px;
+        }
 
-    .project{
-        background:white;
-        padding:20px;
-        border-radius:10px;
-        box-shadow:0 2px 8px rgba(0,0,0,0.1);
-    }
+        .hero-content h1 span {
+            color: #007bff;
+        }
 
-    footer{
-        text-align:center;
-        background:#224abe;
-        color:white;
-        padding:20px;
-        margin-top:30px;
-    }
-</style>
+        .hero-content p {
+            font-size: 20px;
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* ส่วนเนื้อหาหลัก */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        section h2 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: #007bff;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ส่วนข้อมูลเกี่ยวกับฉัน */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* ส่วนทักษะ (Skills) */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #f3f4f6;
+        }
+
+        /* ส่วนผลงาน (Portfolio) */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 200px;
+            background-color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+        }
+
+        .portfolio-info {
+            padding: 20px;
+        }
+
+        .portfolio-info h3 {
+            margin-bottom: 10px;
+        }
+
+        /* ส่วนติดต่อ */
+        .contact-info {
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+
+        /* ส่วนท้าย (Footer) */
+        footer {
+            background-color: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* รองรับหน้าจอมือถือ */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            .hero-content h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-    <img src="https://via.placeholder.com/150" alt="Profile">
-    <h1>นาย/นางสาว ชื่อนักเรียน</h1>
-    <p>แฟ้มสะสมผลงาน (Portfolio)</p>
-</header>
-
-<nav>
-    <a href="#about">ประวัติส่วนตัว</a>
-    <a href="#education">การศึกษา</a>
-    <a href="#skills">ทักษะ</a>
-    <a href="#projects">ผลงาน</a>
-    <a href="#contact">ติดต่อ</a>
-</nav>
-
-<section>
-
-    <div class="card" id="about">
-        <h2>ประวัติส่วนตัว</h2>
-        <br>
-        <p>
-            ชื่อ : ชื่อนักเรียน<br>
-            อายุ : 16 ปี<br>
-            โรงเรียน : โรงเรียนตัวอย่าง<br>
-            ความสนใจ : การเขียนโปรแกรม ออกแบบเว็บไซต์ และเทคโนโลยี
-        </p>
-    </div>
-
-    <div class="card" id="education">
-        <h2>ประวัติการศึกษา</h2>
-        <br>
-        <ul>
-            <li>ระดับประถมศึกษา : โรงเรียนตัวอย่าง</li>
-            <li>ระดับมัธยมศึกษาตอนต้น : โรงเรียนตัวอย่าง</li>
-            <li>ระดับมัธยมศึกษาตอนปลาย : โรงเรียนตัวอย่าง</li>
-        </ul>
-    </div>
-
-    <div class="card" id="skills">
-        <h2>ทักษะ</h2>
-        <br>
-        <div class="skills">
-            <div class="skill">HTML</div>
-            <div class="skill">CSS</div>
-            <div class="skill">JavaScript</div>
-            <div class="skill">Canva</div>
-            <div class="skill">Microsoft Office</div>
+    <header>
+        <div class="nav-container">
+            <div class="logo">Teeraphat.P</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">หน้าแรก</a></li>
+                    <li><a href="#about">เกี่ยวกับฉัน</a></li>
+                    <li><a href="#skills">ทักษะ</a></li>
+                    <li><a href="#portfolio">ผลงาน</a></li>
+                    <li><a href="#contact">ติดต่อ</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
+    </header>
 
-    <div class="card" id="projects">
-        <h2>ผลงานเด่น</h2>
-        <br>
-
-        <div class="projects">
-
-            <div class="project">
-                <h3>เว็บไซต์แนะนำโรงเรียน</h3>
-                <p>พัฒนาเว็บไซต์ประชาสัมพันธ์โรงเรียนด้วย HTML และ CSS</p>
-            </div>
-
-            <div class="project">
-                <h3>โครงงานวิทยาศาสตร์</h3>
-                <p>ได้รับรางวัลรองชนะเลิศระดับโรงเรียน</p>
-            </div>
-
-            <div class="project">
-                <h3>กิจกรรมจิตอาสา</h3>
-                <p>เข้าร่วมกิจกรรมบำเพ็ญประโยชน์เพื่อชุมชน</p>
-            </div>
-
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>ยินดีต้อนรับ ผมชื่อ <span>ธีรภัทร</span></h1>
+            <p>นี่คือพื้นที่รวบรวมผลงาน ความสามารถ และเรื่องราวการเรียนรู้ของผม</p>
+            <a href="#portfolio" class="btn">ดูผลงานของฉัน</a>
         </div>
+    </section>
+
+    <div class="container">
+        
+        <section id="about">
+            <h2>เกี่ยวกับฉัน</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>สวัสดีครับผมชื่อ <strong>ธีรภัทร</strong> กำลังศึกษาและพัฒนาตัวเองในสิ่งที่สนใจ มุ่งมั่นที่จะสร้างสรรค์สิ่งใหม่ๆ และพร้อมที่จะเรียนรู้ทักษะเพิ่มเติมอยู่เสมอ เว็บไซต์นี้สร้างขึ้นเพื่อจัดเก็บแฟ้มสะสมผลงาน (Portfolio) เพื่อนำเสนอศักยภาพและโปรเจกต์ต่างๆ ที่ผมได้ตั้งใจทำขึ้นมาครับ</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>ทักษะความสามารถ</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>HTML / CSS</h3>
+                    <p>ระดับ: พื้นฐาน-กลาง</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Computer Skills</h3>
+                    <p>Word, Excel, PowerPoint</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Graphic Design</h3>
+                    <p>Canva, Photoshop</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Soft Skills</h3>
+                    <p>การทำงานเป็นทีม, การเรียนรู้ไว</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <h2>ผลงานของฉัน</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-img">[ รูปภาพผลงานที่ 1 ]</div>
+                    <div class="portfolio-info">
+                        <h3>โปรเจกต์ชิ้นที่ 1</h3>
+                        <p>อธิบายรายละเอียดสั้นๆ เกี่ยวกับผลงานชิ้นนี้ว่าทำเกี่ยวกับอะไร และใช้ทักษะอะไรบ้าง</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img">[ รูปภาพผลงานที่ 2 ]</div>
+                    <div class="portfolio-info">
+                        <h3>โปรเจกต์ชิ้นที่ 2</h3>
+                        <p>อธิบายรายละเอียดสั้นๆ เกี่ยวกับผลงานชิ้นนี้ว่าทำเกี่ยวกับอะไร และใช้ทักษะอะไรบ้าง</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>ช่องทางการติดต่อ</h2>
+            <div class="contact-info">
+                <p>📧 <strong>อีเมล:</strong> teeraphat.example@gmail.com</p>
+                <p>📱 <strong>เบอร์โทรศัพท์:</strong> 09X-XXXXXXX</p>
+                <p>📍 <strong>ที่อยู่:</strong> กรุงเทพฯ, ประเทศไทย</p>
+            </div>
+        </section>
+
     </div>
 
-    <div class="card" id="contact">
-        <h2>ข้อมูลติดต่อ</h2>
-        <br>
-        <p>Email: student@email.com</p>
-        <p>Facebook: ชื่อนักเรียน</p>
-        <p>โทรศัพท์: 08X-XXX-XXXX</p>
-    </div>
-
-</section>
-
-<footer>
-    <p>© 2026 Portfolio Website | จัดทำโดย ชื่อนักเรียน</p>
-</footer>
+    <footer>
+        <p>&copy; 2026 Teeraphat. All Rights Reserved. Created via GitHub Pages</p>
+    </footer>
 
 </body>
 </html>
